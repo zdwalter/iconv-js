@@ -1,0 +1,29 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">body { text-align: center; width: 60%; } textarea { width: 100%; }</style>
+	<script type="text/javascript" src="iconv.js"></script>
+	<script type="text/javascript">
+		function tocp949() {
+			var orig = document.getElementById('utf8').value;
+			document.getElementById('cp949').value = '[' + Iconv.toCP949(orig) + ']';
+			return false;
+		}
+		function toutf8() {
+			var orig = eval(document.getElementById('cp949').value);
+			document.getElementById('utf8').value = Iconv.fromCP949(orig);
+			return false;
+		}
+	</script>
+</head>
+<body>
+	<fieldset><legend>텍스트 (utf-8)</legend>
+		<textarea id="utf8" rows="20" cols="80"></textarea>
+	</fieldset>
+	<button onclick="return tocp949();">&darr;</button>
+	<button onclick="return toutf8();">&uarr;</button>
+	<fieldset><legend>배열 (cp949)</legend>
+		<textarea id="cp949" rows="20" cols="80"></textarea>
+	</fieldset>
+</body>
+</html>
